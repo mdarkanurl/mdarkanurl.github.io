@@ -47,7 +47,6 @@
       position: relative;
     }
 
-    /* subtle page texture */
     body::before {
       content: '';
       position: absolute;
@@ -57,7 +56,6 @@
       z-index: 0;
     }
 
-    /* ── Case Study Section ───────────────────────────── */
     .case-study {
       position: relative;
       z-index: 1;
@@ -81,7 +79,6 @@
       letter-spacing: .03em;
     }
 
-    /* ── Question answer block ────────────────────────── */
     .qa-block {
       margin-bottom: 32px;
     }
@@ -94,7 +91,6 @@
       margin-bottom: 12px;
     }
 
-    /* ── Answer box ───────────────────────────────────── */
     .answer-box {
       background: var(--answer-bg);
       border-left: 3px solid var(--answer-border);
@@ -113,7 +109,6 @@
       margin-bottom: 8px;
     }
 
-    /* sub-question answer (a, b, c…) — now matches answer-box blue style */
     .sub-answer {
       background: #dde7f2;
       border-left: 3px solid var(--answer-border);
@@ -132,7 +127,6 @@
       margin-bottom: 6px;
     }
 
-    /* ── General text ─────────────────────────────────── */
     p {
       font-size: .97rem;
       color: var(--muted);
@@ -148,7 +142,6 @@
       font-weight: 600;
     }
 
-    /* ── Working / calculation block ─────────────────── */
     .working {
       font-family: 'Courier New', monospace;
       font-size: .88rem;
@@ -162,12 +155,47 @@
       white-space: pre-wrap;
     }
 
+    /* Simulation table */
+    .sim-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Courier New', monospace;
+      font-size: .85rem;
+      margin-top: 12px;
+      margin-bottom: 12px;
+    }
+
+    .sim-table th {
+      background: #d0dcea;
+      color: var(--accent);
+      font-weight: 700;
+      padding: 7px 10px;
+      text-align: left;
+      border: 1px solid #a0b8d0;
+    }
+
+    .sim-table td {
+      padding: 6px 10px;
+      border: 1px solid #b8cde0;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    .sim-table tr:nth-child(even) td {
+      background: #e8eef5;
+    }
+
+    .sim-table tr.highlight-row td {
+      background: #c8ddf5;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
     sup {
       font-size: .65em;
       vertical-align: super;
     }
 
-    /* ── Footer ───────────────────────────────────────── */
     .footer-rule {
       margin-top: 52px;
       padding-top: 16px;
@@ -227,9 +255,9 @@
           <p>Remaining time for Peter's consultation = 3 − 2 = <strong>1 minute</strong>.</p>
           <p>Time for the 4 remaining patients ahead of John = 4 × 3 = <strong>12 minutes</strong>.</p>
           <div class="working">Estimated waiting time for John
-  = Remaining time for Peter + Time for 4 patients
-  = 1 + 12
-  = 13 minutes</div>
+= Remaining time for Peter + Time for 4 patients
+= 1 + 12
+= 13 minutes</div>
         </div>
 
         <!-- Sub-answer (b) -->
@@ -244,13 +272,13 @@
           </p>
           <p>Time for the 4 remaining patients ahead of John = 4 × 3 = <strong>12 minutes</strong>.</p>
           <div class="working">Estimated waiting time for John
-  = Remaining time for Peter + Time for 4 patients
-  = 0 + 12
-  = 12 minutes</div>
-              <p style="margin-top: 18px;">
-                <strong>Note:</strong> This estimate is not strictly accurate. The value of 12 minutes assumes that each remaining patient will take exactly the average consultation time. However, in reality, if any of the remaining patients take less than the average time (or if delays vary), the total waiting time can decrease.
-                    Similarly, if consultations exceed the average, the waiting time will increase.
-              </p>
+= Remaining time for Peter + Time for 4 patients
+= 0 + 12
+= 12 minutes</div>
+          <p style="margin-top: 18px;">
+            <strong>Note:</strong> This estimate is not strictly accurate. The value of 12 minutes assumes that each remaining patient will take exactly the average consultation time. However, in reality, if any of the remaining patients take less than the average time (or if delays vary), the total waiting time can decrease.
+            Similarly, if consultations exceed the average, the waiting time will increase.
+          </p>
         </div>
 
       </div>
@@ -264,7 +292,23 @@
     <h2 class="case-study-title">Case Study 2</h2>
 
     <!-- Answer Q1 -->
-    <div class="qa-block">  <h3 class="qa-block-title">Answers of Question 1</h3>  <div class="answer-box">    <div class="answer-label">Answer</div>    <p>      Since the clinic has <strong>2 doctors working simultaneously</strong>, the queue is processed      faster compared to a single-doctor clinic. Patients are dynamically assigned to whichever doctor      becomes available first.    </p>    <p>      Doctor A takes an average of <strong>3 minutes</strong> per patient, while Doctor B takes      an average of <strong>4 minutes</strong> per patient.    </p>    <p>      To estimate John's waiting time, we calculate the combined processing speed of both doctors.    </p>    <div class="working">Doctor A consultation time = 3 minutes per patient
+    <div class="qa-block">
+      <h3 class="qa-block-title">Answers of Question 1</h3>
+      <div class="answer-box">
+        <div class="answer-label">Answer</div>
+        <p>
+          Since the clinic has <strong>2 doctors working simultaneously</strong>, the queue is processed
+          faster compared to a single-doctor clinic. Patients are dynamically assigned to whichever doctor
+          becomes available first.
+        </p>
+        <p>
+          Doctor A takes an average of <strong>3 minutes</strong> per patient, while Doctor B takes
+          an average of <strong>4 minutes</strong> per patient.
+        </p>
+        <p>
+          To estimate John's waiting time, we calculate the combined processing speed of both doctors.
+        </p>
+        <div class="working">Doctor A consultation time = 3 minutes per patient
 Doctor B consultation time = 4 minutes per patient
 
 In 12 minutes:
@@ -286,116 +330,135 @@ John has 10 patients ahead of him
 Estimated waiting time:
 10 × 1.71 ≈ 17.1 minutes
 
-Estimated waiting time for John ≈ 17 minutes</div>    <p>      Therefore, John's estimated waiting time is approximately      <strong>17 minutes</strong>.    </p>    <p style="margin-top: 18px;">      <strong>Note:</strong> This is an estimated average waiting time. Actual waiting time may vary      depending on how long individual consultations take, emergencies, or unexpected delays.    </p>  </div></div>
+Estimated waiting time for John ≈ 17 minutes</div>
+        <p>
+          Therefore, John's estimated waiting time is approximately
+          <strong>17 minutes</strong>.
+        </p>
+        <p style="margin-top: 18px;">
+          <strong>Note:</strong> This is an estimated average waiting time. Actual waiting time may vary
+          depending on how long individual consultations take, emergencies, or unexpected delays.
+        </p>
+      </div>
+    </div>
 
     <!-- Answer Q2 -->
-<div class="qa-block">
-  <h3 class="qa-block-title">Answers of Question 2</h3>
+    <div class="qa-block">
+      <h3 class="qa-block-title">Answers of Question 2</h3>
 
-  <div class="answer-box">
-    <div class="answer-label">Answer</div>
+      <div class="answer-box">
+        <div class="answer-label">Answer</div>
 
-    <p>
-      At the time John joins the queue, there are <strong>10 patients ahead of him</strong>.
-      Doctor A is immediately available, while Doctor B is currently seeing Lucas.
-    </p>
+        <p>
+          At the time John joins the queue, there are <strong>10 patients ahead of him</strong>
+          (labelled P1–P10). Doctor A is immediately available, while Doctor B is currently seeing
+          Lucas, who has already been in the consultation room for <strong>2 minutes</strong>.
+        </p>
 
-    <p>
-      Doctor A takes an average of <strong>3 minutes</strong> per patient, while Doctor B takes
-      an average of <strong>4 minutes</strong> per patient.
-    </p>
+        <p>
+          Since Doctor B's average consultation time is 4 minutes, the remaining time for Lucas is:
+        </p>
 
-    <p>
-      Since Lucas has already spent <strong>2 minutes</strong> with Doctor B, the estimated
-      remaining consultation time for Lucas is:
-    </p>
+        <div class="working">Remaining time for Lucas = 4 − 2 = 2 minutes</div>
 
-    <div class="working">Remaining time for Lucas
-= 4 − 2
-= 2 minutes</div>
+        <p style="margin-top: 14px;">
+          The correct approach is to <strong>simulate the queue step by step</strong>, assigning
+          each newly freed patient slot to whichever doctor becomes available next. Patients are
+          served in queue order — P1, P2, P3, … — with no preferences.
+        </p>
 
-    <p>
-      This means:
-    </p>
+        <table class="sim-table">
+          <thead>
+            <tr>
+              <th>Time (min)</th>
+              <th>Doctor A action</th>
+              <th>Doctor B action</th>
+              <th>Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>t = 0</td>
+              <td>Takes P1 → done at t = 3</td>
+              <td>2 min remaining with Lucas</td>
+              <td>Doctor A immediately available</td>
+            </tr>
+            <tr>
+              <td>t = 2</td>
+              <td>Busy with P1</td>
+              <td>Finishes Lucas → takes P2 → done at t = 6</td>
+              <td>Doctor B becomes free</td>
+            </tr>
+            <tr>
+              <td>t = 3</td>
+              <td>Finishes P1 → takes P3 → done at t = 6</td>
+              <td>Busy with P2</td>
+              <td>Doctor A becomes free</td>
+            </tr>
+            <tr>
+              <td>t = 6</td>
+              <td>Finishes P3 → takes P4 → done at t = 9</td>
+              <td>Finishes P2 → takes P5 → done at t = 10</td>
+              <td>Both free simultaneously</td>
+            </tr>
+            <tr>
+              <td>t = 9</td>
+              <td>Finishes P4 → takes P6 → done at t = 12</td>
+              <td>Busy with P5</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>t = 10</td>
+              <td>Busy with P6</td>
+              <td>Finishes P5 → takes P7 → done at t = 14</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>t = 12</td>
+              <td>Finishes P6 → takes P8 → done at t = 15</td>
+              <td>Busy with P7</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>t = 14</td>
+              <td>Busy with P8</td>
+              <td>Finishes P7 → takes P9 → done at t = 18</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>t = 15</td>
+              <td>Finishes P8 → takes P10 → done at t = 18</td>
+              <td>Busy with P9</td>
+              <td></td>
+            </tr>
+            <tr class="highlight-row">
+              <td>t = 18</td>
+              <td colspan="2">Both doctors finish simultaneously → next patient is John</td>
+              <td>John is called in ✓</td>
+            </tr>
+          </tbody>
+        </table>
 
-    <p>
-      • Doctor A starts processing patients immediately.<br>
-      • Doctor B joins the queue processing after 2 minutes.
-    </p>
+        <p>
+          All 10 patients ahead of John have been seen by <strong>t = 18 minutes</strong>. At that
+          point, both doctors become free simultaneously, and John is the next patient in the queue.
+        </p>
 
-    <p>
-      To estimate John's waiting time, we calculate how many patients both doctors can complete
-      before John becomes next in line.
-    </p>
+        <div class="working">Patients P1–P10 are fully cleared at t = 18 minutes
 
-    <div class="working">Doctor A processes 1 patient every 3 minutes
+John's estimated waiting time = 18 minutes</div>
 
-In 12 minutes, Doctor A can process:
-12 ÷ 3 = 4 patients
+        <p style="margin-top: 18px;">
+          <strong>Note:</strong> This simulation assumes each patient takes exactly the average
+          consultation time (3 min for Doctor A, 4 min for Doctor B). Actual waiting time may
+          differ if individual consultations are shorter or longer, or if unexpected delays arise.
+          The step-by-step simulation is more accurate than averaging methods because it correctly
+          accounts for the staggered availability of Doctor B (who joins the queue 2 minutes late)
+          and avoids over- or under-estimating when the two doctors come free at different moments.
+        </p>
 
-Doctor B becomes available after 2 minutes
-
-Remaining active time within 12 minutes:
-12 − 2 = 10 minutes
-
-Doctor B processes 1 patient every 4 minutes
-
-Patients Doctor B can process in 10 minutes:
-10 ÷ 4 = 2.5 patients
-
-Approximately:
-2 patients fully completed
-
-Total patients completed in about 12 minutes:
-4 + 2 = 6 patients</div>
-
-    <p>
-      After approximately 12 minutes, around 6 patients ahead of John will have been completed.
-      There will still be about 4 patients ahead of him.
-    </p>
-
-    <div class="working">Remaining patients ahead of John
-= 10 − 6
-= 4 patients</div>
-
-    <p>
-      Now both doctors are actively processing the queue together.
-    </p>
-
-    <div class="working">Combined processing rate:
-
-Doctor A:
-1 patient every 3 minutes = 1/3 patient per minute
-
-Doctor B:
-1 patient every 4 minutes = 1/4 patient per minute
-
-Combined rate:
-1/3 + 1/4
-= 7/12 patients per minute
-
-Time required for remaining 4 patients:
-4 ÷ (7/12)
-= 48/7
-≈ 6.86 minutes</div>
-
-    <p>
-      Therefore, John's total estimated waiting time is:
-    </p>
-
-    <div class="working">Total waiting time
-≈ 12 + 6.86
-≈ 18.86 minutes
-
-Estimated waiting time ≈ 19 minutes</div>
-
-    <p style="margin-top: 18px;">
-      <strong>Note:</strong> This is an estimated waiting time based on average consultation
-      durations. Actual waiting time may vary depending on emergencies, consultation complexity,
-      or unexpected delays.
-    </p>
-
-  </div>
-</div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
