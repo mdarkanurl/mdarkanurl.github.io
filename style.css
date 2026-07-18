@@ -1,4 +1,61 @@
-*{
-    margin: 0;
-    padding: 0;
+@layer global {
+    @font-face {
+        font-display: Calibre-Medium;
+        font-family: 'Calibre-Medium';
+        font-style: normal;
+        src: url('./fonts/Calibre-Medium.ttf')
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+}
+
+body {
+    font-family: Calibre-Medium, Arial, sans-serif;
+}
+
+@layer component {
+    .container {
+        width: min(calc(100% - 48px), calc(1200 / 16 * 1rem));
+        margin-inline: auto;
+        /* margin-top: 20px; */
+    }
+
+    .navbar {
+        width: min(100% - 48px, 1200px);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo img {
+        width: 35px;
+        display: block;
+        border-radius: 6px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        gap: 50px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: black;
+        font-family: 'Calibre-Medium' 'Courier New', Courier, monospace;
+        font-size: 13px;
+        line-height: 7;
+        text-transform: uppercase;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: #ff2d75;
+    }
 }
