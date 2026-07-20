@@ -11,11 +11,25 @@
 <header>
     <div class="container">
         <nav class="navbar">
-            <a href="index.html" class="logo">
+            <a href="index.html" class="logo nav-overlay">
                 <img src="./images/setting.png" alt="Logo">
             </a>
 
+            <button id="btnOpen" class="topnav__open" aria-expanded="false" aria-labelledby="nav-label">
+                <img src="./images/icon/hamburger.svg" alt="" width="30" height="50" />
+            </button>
+
             <ul class="nav-links">
+                <button class="topnav__close" id="btnClose" aria-label="Close">
+                    <img src="./images/icon/x-symbol.svg" alt="" width="20" height="30" />
+                </button>
+
+                <li class="nav-logo">
+                    <a href="index.html">
+                        <img src="./images/setting.png" alt="Logo">
+                    </a>
+                </li>
+                
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./projects.html">Projects</a></li>
                 <li><a href="./contact.html">Contact</a></li>
@@ -25,5 +39,6 @@
     </div>
 </header>
 
+<script src="./script.js"></script>
 </body>
 </html>
