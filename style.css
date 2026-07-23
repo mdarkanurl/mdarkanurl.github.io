@@ -360,8 +360,8 @@
     .resume-text {
         font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
         color: #495057;
-        margin-bottom: 2rem;
-        line-height: 0.5;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
     }
 
     .resume-link {
@@ -386,7 +386,6 @@
         width: min(calc(100% - 48px), calc(1200 / 16 * 1rem));
         margin-inline: auto;
         margin-top: clamp(60px, 10vw, 120px);
-        padvw, 120px);
     }
 
     .contact-text {
@@ -445,4 +444,3 @@
         font-size: 0.875rem;
     }
 }
-                            
