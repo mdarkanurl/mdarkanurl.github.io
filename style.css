@@ -6,6 +6,10 @@
         src: url('./fonts/Calibre-Medium.ttf')
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -178,6 +182,22 @@
         font-size: clamp(1.5rem, 4.5vw, 2.8rem);
         line-height: 1.3;
         font-family: Calibre-Medium, 'Courier New', Courier, monospace;
+    }
+
+    .headline .p2 {
+        margin-top: 0.75rem;
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        color: #495057;
+    }
+
+    .headline .p2 a {
+        color: #e8590c;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .headline .p2 a:hover {
+        text-decoration: underline;
     }
 
     .backend-engineer {
