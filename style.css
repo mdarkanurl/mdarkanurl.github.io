@@ -225,6 +225,46 @@
         letter-spacing: 0.02em;
     }
 
+    .skills {
+        width: min(calc(100% - 48px), calc(1200 / 16 * 1rem));
+        margin-inline: auto;
+        margin-top: clamp(60px, 10vw, 120px);
+    }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .skill-category {
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: clamp(1rem, 2vw, 1.5rem);
+        border: 1px solid #e9ecef;
+    }
+
+    .skill-category h3 {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #212529;
+    }
+
+    .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .skill-tags span {
+        background: #e9ecef;
+        color: #495057;
+        font-size: 0.8125rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 6px;
+    }
+
     .projects {
         width: min(calc(100% - 48px), calc(1200 / 16 * 1rem));
         margin-inline: auto;
