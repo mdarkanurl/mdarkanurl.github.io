@@ -65,7 +65,7 @@
 
     .nav-links a:hover,
     .nav-links a.active {
-        color: #ff2d75;
+        color: #3178c6;
     }
 
     .navbar button {
@@ -154,5 +154,41 @@
             font-size: 13px;
             line-height: 7;
         }
+    }
+
+
+    /* Main section */
+    .hero {
+        width: min(calc(100% - 48px), calc(1200 / 16 * 1rem));
+        margin-inline: auto;
+        margin-top: 80px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .headline {
+        width: 700px;
+    }
+
+    .headline .p1 {
+        font-size: 45px;
+        line-height: 60px;
+        font-family: Calibre-Medium, 'Courier New', Courier, monospace;
+        /* margin-top: 20px; */
+    }
+
+    .backend-engineer {
+        color: #3178c6;
+    }
+
+    .ts {
+        color: #3178C6;
+    }
+
+    .img img {
+        border-radius: 10px;
+        box-shadow: #3178c6 10px 10px;
     }
 }
