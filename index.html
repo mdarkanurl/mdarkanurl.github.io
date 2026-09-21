@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mohammad Arkan — Backend Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #0a0a0a;
+    --muted: #5c5c5c;
+    --rule: #d6d6d6;
+    --rule-strong: #0a0a0a;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0a0a0a;
+      --fg: #f5f5f5;
+      --muted: #9a9a9a;
+      --rule: #2a2a2a;
+      --rule-strong: #f5f5f5;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0a0a;
+    --fg: #f5f5f5;
+    --muted: #9a9a9a;
+    --rule: #2a2a2a;
+    --rule-strong: #f5f5f5;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  body {
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background .25s ease, color .25s ease;
+  }
+  .mono {
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  a { color: var(--fg); }
+  .wrap {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+  }
+  @media (max-width: 480px) {
+    .wrap { padding: 48px 20px 72px; }
+  }
+
+  /* theme toggle */
+  .theme-toggle {
+    position: fixed;
+    top: calc(20px + env(safe-area-inset-top, 0px));
+    right: 20px;
+    z-index: 10;
+    background: transparent;
+    border: 1px solid var(--rule-strong);
+    color: var(--fg);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    padding: 6px 10px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .theme-toggle:hover { background: var(--fg); color: var(--bg); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+
+  /* header */
+  header.hero {
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--rule-strong);
+    margin-bottom: 40px;
+  }
+  h1 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: clamp(34px, 6vw, 52px);
+    line-height: 1.05;
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+  }
+  .role {
+    font-size: 17px;
+    color: var(--muted);
+    margin: 0 0 28px;
+  }
+  .contact-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
+  .contact-line a { text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .contact-line a:hover { border-bottom-color: var(--fg); }
+  .contact-line span.sep { color: var(--muted); }
+
+  /* sections */
+  section { margin-bottom: 48px; }
+  section:last-of-type { margin-bottom: 0; }
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0 0 16px;
+  }
+  p.summary {
+    max-width: 62ch;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  /* skills */
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+  }
+  .skill {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    border: 1px solid var(--rule);
+    padding: 4px 9px;
+    white-space: nowrap;
+  }
+
+  /* experience / projects entries */
+  .entry {
+    padding: 22px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .entry:first-of-type { border-top: none; padding-top: 0; }
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    margin-bottom: 6px;
+  }
+  .entry-title {
+    font-weight: 600;
+    font-size: 17px;
+    margin: 0;
+  }
+  .entry-title a { text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .entry-title a:hover { border-bottom-color: var(--fg); }
+  .entry-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .entry-sub {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+  ul.bullets {
+    margin: 0;
+    padding-left: 18px;
+  }
+  ul.bullets li {
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+  ul.bullets li:last-child { margin-bottom: 0; }
+
+  /* education */
+  .edu-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+  }
+  .edu-name { font-weight: 600; font-size: 16px; }
+  .edu-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .edu-detail {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* footer */
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule-strong);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  footer a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  footer a:hover { border-bottom-color: var(--fg); }
+
+  .fine-print {
+    margin: 20px 0 0;
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body, .theme-toggle { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<button class="theme-toggle mono" id="themeToggle" aria-label="Toggle color theme">mode</button>
+
+<div class="wrap">
+
+  <header class="hero">
+    <h1>Mohammad Arkan</h1>
+    <p class="role">Backend Developer — Node.js &amp; TypeScript</p>
+    <div class="contact-line">
+      <a href="mailto:mdarkanurl@gmail.com">mdarkanurl@gmail.com</a>
+      <span class="sep">&nbsp;</span>
+      <a href="https://github.com/mdarkanurl" target="_blank" rel="noopener">github.com/mdarkanurl</a>
+      <span class="sep">&nbsp;</span>
+      <a href="https://linkedin.com/in/thearkan" target="_blank" rel="noopener">linkedin.com/in/thearkan</a>
+      <span class="sep">&nbsp;</span>
+      <a href="https://medium.com/@mdarkanurl" target="_blank" rel="noopener">medium.com/@mdarkanurl</a>
+      <span class="sep">&nbsp;</span>
+      <a href="https://x.com/mdarkanurl" target="_blank" rel="noopener">x.com/mdarkanurl</a>
+      <span class="sep">&nbsp;</span>
+      <span>Chattogram, Bangladesh</span>
+    </div>
+  </header>
+
+  <section id="summary">
+    <p class="section-label">summary</p>
+    <p class="summary">With over 2 years of experience, I build scalable backend systems using Node.js and TypeScript. I design and deploy microservices and event-driven systems, improving performance and reliability by up to 30% through database optimization, efficient architectures, and automation.</p>
+  </section>
+
+  <section id="skills">
+    <p class="section-label">skills</p>
+    <div class="skills">
+      <span class="skill">TypeScript</span>
+      <span class="skill">Node.js</span>
+      <span class="skill">Express.js</span>
+      <span class="skill">NestJS</span>
+      <span class="skill">SQL</span>
+      <span class="skill">Bash</span>
+      <span class="skill">HTML</span>
+      <span class="skill">Git / GitHub</span>
+      <span class="skill">PostgreSQL</span>
+      <span class="skill">MongoDB</span>
+      <span class="skill">Redis</span>
+      <span class="skill">Prisma</span>
+      <span class="skill">Drizzle</span>
+      <span class="skill">REST API</span>
+      <span class="skill">OAuth</span>
+      <span class="skill">JWT</span>
+      <span class="skill">Better-Auth</span>
+      <span class="skill">Rate Limiting</span>
+      <span class="skill">RabbitMQ</span>
+      <span class="skill">Docker</span>
+      <span class="skill">Linux</span>
+      <span class="skill">GCP</span>
+      <span class="skill">CI/CD</span>
+      <span class="skill">Jest / Supertest</span>
+      <span class="skill">Microservices</span>
+      <span class="skill">Event-Driven Systems</span>
+    </div>
+  </section>
+
+  <section id="experience">
+    <p class="section-label">experience</p>
+
+    <div class="entry">
+      <div class="entry-head">
+        <p class="entry-title">Backend Engineer — Internship, <a href="https://salondesk.store" target="_blank" rel="noopener">Drakilo</a></p>
+        <span class="entry-meta">03/2026 – 05/2026 · Dhaka, BD</span>
+      </div>
+      <ul class="bullets">
+        <li>Redesigned the authentication system using BetterAuth and added rate limiting, database indexing, and query optimizations to improve security and prevent abuse.</li>
+        <li>Built and maintained a suite of Node.js microservices, increasing system efficiency and scalability by 20% across business functions.</li>
+        <li>Designed backend services from scratch to production with robust error handling and comprehensive test coverage.</li>
+        <li>Refactored legacy code to improve maintainability, reducing critical bugs by 25%.</li>
+        <li>Partnered with the frontend team on API design, boosting team productivity by 15%.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <section id="projects">
+    <p class="section-label">projects</p>
+
+    <div class="entry">
+      <div class="entry-head">
+        <p class="entry-title"><a href="https://github.com/mdarkanurl/ShobApp24" target="_blank" rel="noopener">ShobApp24</a></p>
+        <span class="entry-meta">NestJS · GitHub</span>
+      </div>
+      <p class="entry-sub">A GitHub automation platform for developers — think n8n, built specifically for GitHub.</p>
+      <ul class="bullets">
+        <li>Architected a multi-tenant automation SaaS with NestJS, PostgreSQL, RabbitMQ, and Redis.</li>
+        <li>Built an event-driven webhook pipeline handling 17+ GitHub event types at up to 1,000 events/minute.</li>
+        <li>Added Stripe subscriptions, plan-based access control, and 587+ automated tests.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <p class="entry-title"><a href="https://github.com/mdarkanurl/DeshCode" target="_blank" rel="noopener">DeshCode</a></p>
+        <span class="entry-meta">Node.js · Docker</span>
+      </div>
+      <p class="entry-sub">A LeetCode-style coding platform with sandboxed execution and real-time leaderboards.</p>
+      <ul class="bullets">
+        <li>Built an online judge platform with Node.js, TypeScript, Express, and PostgreSQL microservices.</li>
+        <li>Ran secure code execution in Docker sandboxes with automated tests and resource isolation.</li>
+        <li>Powered real-time leaderboards with Redis sorted sets and RabbitMQ/Kafka event pipelines.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <p class="entry-title"><a href="https://github.com/mdarkanurl/learnscroll" target="_blank" rel="noopener">LearnScroll</a></p>
+        <span class="entry-meta">Bun · Hono</span>
+      </div>
+      <p class="entry-sub">A backend API platform for online course management — instructors author courses, students browse and stream.</p>
+      <ul class="bullets">
+        <li>Backend API for course management, built with Bun, Hono, PostgreSQL, and Drizzle.</li>
+        <li>Auth with email verification, MFA, and cookie-based JWT with refresh token rotation.</li>
+        <li>Signed Cloudinary video uploads and async email delivery via RabbitMQ with retry logic.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <p class="entry-title"><a href="https://github.com/mdarkanurl/findDecisions" target="_blank" rel="noopener">Find Decisions</a></p>
+        <span class="entry-meta">Node.js · NestJS</span>
+      </div>
+      <p class="entry-sub">A structured decision log for capturing and reviewing human decisions on a project.</p>
+      <ul class="bullets">
+        <li>NestJS backend for logging decisions across projects, invites, and members.</li>
+        <li>Type-safe data access with Prisma and Zod-validated input at every endpoint.</li>
+        <li>Auth with email verification and password reset, queued through RabbitMQ.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <p class="entry-title"><a href="https://github.com/mdarkanurl/finance-dashboard-system" target="_blank" rel="noopener">Finance Dashboard System</a></p>
+        <span class="entry-meta">Node.js · NestJS</span>
+      </div>
+      <p class="entry-sub">A role-based finance dashboard API built for clean, maintainable, production-style code.</p>
+      <ul class="bullets">
+        <li>Role-based access control with JWT access and refresh tokens stored in cookies.</li>
+        <li>Advanced pagination and rate limiting with Redis and rate-limiter-flexible.</li>
+        <li>Consistent, well-structured NestJS and Prisma API, containerized with Docker.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <p class="entry-title"><a href="https://github.com/mdarkanurl/SiteNavigator" target="_blank" rel="noopener">SiteNavigator</a></p>
+        <span class="entry-meta">TypeScript · CLI tool</span>
+      </div>
+      <p class="entry-sub">A CLI tool that drives a real Chromium browser from terminal commands.</p>
+      <ul class="bullets">
+        <li>TypeScript CLI that controls a real Chromium browser via Playwright and Crawlee.</li>
+        <li>Navigates, fills forms, and clicks by selector, text, href, or index.</li>
+        <li>Captures page HTML, interactive elements, and screenshots straight from the terminal.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <p class="entry-title"><a href="https://github.com/mdarkanurl/startups-from-ai" target="_blank" rel="noopener">Startups From AI</a></p>
+        <span class="entry-meta">Node.js · Scraper</span>
+      </div>
+      <p class="entry-sub">An automated system that discovers, analyzes, and posts content about startups.</p>
+      <ul class="bullets">
+        <li>Continuously crawls the web and Product Hunt for new startup data.</li>
+        <li>Uses Google Gemini to generate summaries, tweets, and blog posts.</li>
+        <li>Auto-publishes to Twitter and Dev.to on a scheduled workflow loop.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <p class="entry-title"><a href="https://github.com/mdarkanurl/GoApp" target="_blank" rel="noopener">GoApp</a></p>
+        <span class="entry-meta">Go · chi</span>
+      </div>
+      <p class="entry-sub">An RSS feed aggregator API with scheduled background scraping.</p>
+      <ul class="bullets">
+        <li>Go and chi-based RSS aggregator API with API-key authentication and full CRUD.</li>
+        <li>Background workers scrape and parse followed feeds into posts on a schedule.</li>
+        <li>Type-safe PostgreSQL queries generated with sqlc.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <section id="education">
+    <p class="section-label">education</p>
+    <div class="edu-row">
+      <span class="edu-name">Banskhali Government Bangabandhu High School</span>
+      <span class="edu-meta">01/2019 – 01/2024</span>
+    </div>
+    <p class="edu-detail">Secondary School Certificate (SSC) — GPA 3.56 / 5.00 · Chattogram, Bangladesh</p>
+  </section>
+
+  <footer>
+    <span>English (Fluent), Bangla (Native)</span>
+    <span><a href="mailto:mdarkanurl@gmail.com">Get in touch</a></span>
+  </footer>
+
+  <p class="fine-print mono">© 2026 Mohammad Arkan. Built with HTML &amp; CSS.</p>
+
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('themeToggle');
+    var root = document.documentElement;
+    var current = null;
+    btn.addEventListener('click', function () {
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (current === null) current = prefersDark ? 'dark' : 'light';
+      current = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', current);
+    });
+  })();
+</script>
+
+</body>
+</html>
